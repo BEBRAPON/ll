@@ -16,15 +16,15 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="name" VerticalAlignment="Center" 
-                 TextAlignment="Center"/>
-        <TextBox x:Name="age" VerticalAlignment="Center" 
-                 TextAlignment="Center" Grid.Row="1"/>
-        <Button x:Name="save" Grid.Row="2" Content="Сохранить"
-                VerticalAlignment="Center" HorizontalAlignment="Center" Click="save_Click"/>
+        <TextBox x:Name="name" />
+        <TextBox x:Name="age" Grid.Row="1"/>
+        
+        <Button x:Name="save" Grid.Row="2" Content="Сохранить" Click="save_Click"/>
         <Button x:Name="unload" Grid.Row="2" Content="Выгрузить"
+                Grid.Column="1" Click="unload_Click"/>
+        <Button x:Name="changeTheme" Grid.Row="2" Content="Сменить тему"
                 Grid.Column="1"
-                VerticalAlignment="Center" HorizontalAlignment="Center" Click="unload_Click"/>
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="changeTheme_Click"/>
         <ListBox x:Name="persons" Grid.Column="1" Grid.RowSpan="2"/>
     </Grid>
 </Window>

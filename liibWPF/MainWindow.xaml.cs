@@ -14,14 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using library;
+using ThemeLib;
 
 namespace liibWPF
 {
     public partial class MainWindow : Window
     {
+        public string CurrentTheme;
         public MainWindow()
         {
             InitializeComponent();
+            CurrentTheme = "Pink";
         }
         public static string solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
         public static string filePath = System.IO.Path.Combine(solutionDirectory, "person.json");
@@ -47,6 +50,26 @@ namespace liibWPF
             foreach (Person person in fileData)
             {
                 persons.Items.Add($"Name: {person.name}, Age: {person.age}");
+            }
+        }
+
+        private void changeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentTheme == "Pink")
+            {
+                ResourceDictionary newTheme = new ResourceDictionary();
+                newTheme.Source = new Uri("/ThemeLib;component/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+                Application.Current.Resources.MergedDictionaries[0] = newTheme;
+                CurrentTheme = "Dark";
+                return;
+            }
+            else
+            {
+                ResourceDictionary newTheme = new ResourceDictionary();
+                newTheme.Source = new Uri("/ThemeLib;component/Themes/LightTheme.xaml", UriKind.RelativeOrAbsolute);
+                Application.Current.Resources.MergedDictionaries[0] = newTheme;
+                CurrentTheme = "Pink";
+                return;
             }
         }
     }
